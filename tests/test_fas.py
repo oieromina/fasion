@@ -1,3 +1,5 @@
+from asyncio import wait
+
 from playwright.sync_api import Page, expect
 from playwright.sync_api import BrowserContext
 
@@ -11,4 +13,11 @@ def test_logged_in(page:Page, base_url):
     page.locator('#password').fill('fashion123')
     page.get_by_role('button', name='Login').click()
     expect(page.get_by_text('Welcome, demouser!')).to_be_visible()
+
+def test_login_textbox(page:Page, base_url):
+    page.goto(f"{base_url}/login.html")
+    page.locator('#username').fill('demouser')
+    page.get_by_role('button', name='Login').click()
+    page.wait_for_timeout(300)
+    expect(page.get_by_text('Welcome, demouser!').to_be_visible()
 
