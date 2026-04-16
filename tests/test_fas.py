@@ -1,7 +1,4 @@
-from asyncio import wait
-
 from playwright.sync_api import Page, expect
-from playwright.sync_api import BrowserContext
 
 def test_opened(page:Page, base_url):
     page.goto(f"{base_url}/login.html")
