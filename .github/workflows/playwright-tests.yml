@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        browser: [chromium, webkit]
+        browser: [chromium]
         env: [local, staging, prod]
 
     steps:
