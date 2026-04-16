@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -26,12 +29,36 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest-json-report
 
       # ✅ Install ONLY chromium
       - name: Install Playwright browser (chromium only)
         run: playwright install --with-deps ${{ matrix.browser }}
 
-      - name: Run tests
+      # ✅ Run tests + generate JSON report
+      - name: Run tests and generate report
         env:
           ENV: ${{ matrix.env }}
-        run: pytest --browser=${{ matrix.browser }} -v
+        run: |
+          pytest --browser=${{ matrix.browser }} \
+                 --json-report \
+                 --json-report-file=report.json
+
+      # ✅ Convert JSON → Markdown
+      - name: Generate Markdown report
+        run: python generate_report.py
+
+      # ✅ Publish to GitHub Wiki
+      - name: Publish results to Wiki
+        run: |
+          git clone https://github.com/${{ github.repository }}.wiki.git
+          cd $(basename ${{ github.repository }}).wiki
+
+          cp ../RESULTS.md Test-Results.md
+
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add .
+          git commit -m "Update test results" || echo "No changes"
+          git push
