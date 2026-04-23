@@ -10,7 +10,9 @@ def test_opened(page:Page, base_url):
 
 def test_logged_in(page:Page, base_url, user_email, password):
     page.goto(f"{base_url}/login.html")
-    page.get_by_role(role='button', name='Consent').click()
+    consent_button = page.get_by_role('button', name='Consent')
+    if consent_button.is_visible():
+        consent_button.click()
     page.get_by_role(role='link', name=' Signup / Login').click()
     expect(page.get_by_role(role='button', name='Login')).to_be_visible()
     page.locator('input[data-qa="login-email"]').fill(user_email)
