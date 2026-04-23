@@ -1,7 +1,7 @@
-# QA Engineer Home Assignment
-This repository contains 2 tests for Log in.
-Is triggered by push in [master]
-Can be triggered manually: GitHub → Actions → Run workflow
+## QA Engineer Home Assignment
+- This repository contains 2 tests for Log in.
+- Is triggered by push in [master]
+- Can be triggered manually: GitHub → Actions → Run workflow
 --------------------------------------
 ## Tech stack
 

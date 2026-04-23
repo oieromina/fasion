@@ -34,4 +34,6 @@ jobs:
       - name: Run tests
         env:
           ENV: ${{ matrix.env }}
-        run: pytest --browser=${{ matrix.browser }} -v
+        run: pytest --browser=${{ matrix.browser }} -v --html=report.html --self-contained-html
+
+      # Show on wiki to be added
