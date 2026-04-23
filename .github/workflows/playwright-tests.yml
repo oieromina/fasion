@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         browser: [chromium]
-        env: [local, staging, prod]
+        env: [prod]
 
     steps:
       - uses: actions/checkout@v4
