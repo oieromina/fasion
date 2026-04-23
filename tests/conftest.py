@@ -13,7 +13,10 @@ def base_url():
 @pytest.fixture(scope="session")
 def user_name():
     return os.getenv("TEST_USER_NAME", "default_user")
+@pytest.fixture(scope="session")
+def user_email():
+    return os.getenv("TEST_USER_EMAIL", "oieromina1@gmail.com")
 
 @pytest.fixture(scope="session")
 def password():
-    return os.getenv("TEST_PASSWORD", "default_password")
+    return os.getenv("TEST_PASSWORD", "123456789")
