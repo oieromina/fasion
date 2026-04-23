@@ -1,5 +1,6 @@
 # QA Engineer Home Assignment
 This repository contains 2 tests for Log in.
+Is triggered by push in [master]
 Can be triggered manually: GitHub → Actions → Run workflow
 --------------------------------------
 ## Tech stack
@@ -9,9 +10,7 @@ Can be triggered manually: GitHub → Actions → Run workflow
 - Playwright
 
 ## App under test:
-#Local	http://localhost:4000/fashionhub
-#Staging	https://staging-env/fashionhub
-#Production	https://pocketaces2.github.io/fashionhub
+Production	https://automationexercise.com/
 
 ## Notes and assumptions
 
