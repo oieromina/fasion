@@ -2,12 +2,18 @@ import os
 import pytest
 
 BASE_URLS = {
-    "local": "http://localhost:4000/fashionhub",
-    "staging": "https://staging-env/fashionhub",
-    "prod": "https://pocketaces2.github.io/fashionhub"
+    "prod": "https://automationexercise.com/"
 }
 
 @pytest.fixture(scope="session")
 def base_url():
     env = os.getenv("ENV", "prod")
     return BASE_URLS[env]
+
+@pytest.fixture(scope="session")
+def user_name():
+    return os.getenv("TEST_USER_NAME", "default_user")
+
+@pytest.fixture(scope="session")
+def password():
+    return os.getenv("TEST_PASSWORD", "default_password")
