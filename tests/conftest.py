@@ -2,7 +2,8 @@ import os
 import pytest
 
 BASE_URLS = {
-    "prod": "https://automationexercise.com/"
+    "prod": "https://automationexercise.com/",
+    "send": "https://automationexercise.ua/"
 }
 
 @pytest.fixture(scope="session")
